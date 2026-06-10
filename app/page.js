@@ -71,7 +71,7 @@ function formatCitation(paper, format) {
         }
         return name;
       }).join("; ");
-      return `${mdpiAuthors}. ${title}. ScholarSynth ${year}.`;
+      return `${mdpiAuthors}. ${title}. ScholarSync ${year}.`;
     }
     case "researchgate":
       // ResearchGate Style: Author (Year). "Title." ResearchGate Publication.
@@ -133,7 +133,7 @@ export default function Home() {
     // Load settings
     const savedSize = localStorage.getItem("rag_chunk_size") || "800";
     const savedOverlap = localStorage.getItem("rag_chunk_overlap") || "150";
-    const savedTheme = localStorage.getItem("scholarsynth_theme") || "light";
+    const savedTheme = localStorage.getItem("ScholarSync_theme") || "light";
     setChunkSize(parseInt(savedSize, 10));
     setChunkOverlap(parseInt(savedOverlap, 10));
     setTheme(savedTheme);
@@ -146,14 +146,14 @@ export default function Home() {
     // Load persisted uploaded papers from localStorage
     let savedUploaded = [];
     try {
-      const raw = localStorage.getItem("scholarsynth_uploaded_papers");
+      const raw = localStorage.getItem("ScholarSync_uploaded_papers");
       if (raw) savedUploaded = JSON.parse(raw);
     } catch (_) { savedUploaded = []; }
 
     // Load persisted chat histories
     let savedChats = {};
     try {
-      const rawChats = localStorage.getItem("scholarsynth_chat_histories");
+      const rawChats = localStorage.getItem("ScholarSync_chat_histories");
       if (rawChats) savedChats = JSON.parse(rawChats);
     } catch (_) { savedChats = {}; }
 
@@ -181,7 +181,7 @@ export default function Home() {
         const trimmed = uploaded.map(p => ({ ...p, chunks: p.chunks.slice(0, 200) }));
         payload = JSON.stringify(trimmed);
       }
-      localStorage.setItem("scholarsynth_uploaded_papers", payload);
+      localStorage.setItem("ScholarSync_uploaded_papers", payload);
     } catch (_) {}
   }, [papers]);
 
@@ -189,7 +189,7 @@ export default function Home() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     try {
-      localStorage.setItem("scholarsynth_chat_histories", JSON.stringify(chatHistories));
+      localStorage.setItem("ScholarSync_chat_histories", JSON.stringify(chatHistories));
     } catch (_) {}
   }, [chatHistories]);
 
@@ -225,7 +225,7 @@ export default function Home() {
   // Toggle Dark/Light Mode Theme
   const handleToggleTheme = (newTheme) => {
     setTheme(newTheme);
-    localStorage.setItem("scholarsynth_theme", newTheme);
+    localStorage.setItem("ScholarSync_theme", newTheme);
     if (newTheme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
@@ -679,7 +679,7 @@ export default function Home() {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "scholarsynth_catalog.csv");
+    link.setAttribute("download", "ScholarSync_catalog.csv");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -687,7 +687,7 @@ export default function Home() {
 
   // Export Tabular data to Markdown Table
   const handleExportMarkdown = () => {
-    let md = `# ScholarSynth Formulation Ledger\n\n`;
+    let md = `# ScholarSync Formulation Ledger\n\n`;
     md += `| Paper Title | Authors | Year | Research Problem Statement | Methodology Details | Key Results & Findings | Core Contributions | Datasets Used |\n`;
     md += `| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n`;
     
@@ -699,7 +699,7 @@ export default function Home() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.setAttribute("href", url);
-    link.setAttribute("download", "scholarsynth_ledger.md");
+    link.setAttribute("download", "ScholarSync_ledger.md");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -711,7 +711,7 @@ export default function Home() {
     let html = `
       <html>
         <head>
-          <title>ScholarSynth Research Ledger</title>
+          <title>ScholarSync Research Ledger</title>
           <style>
             body { font-family: sans-serif; padding: 40px; color: #171d1c; background-color: #ffffff; }
             h1 { font-family: sans-serif; font-size: 24px; border-bottom: 2px solid #171d1c; padding-bottom: 8px; margin-bottom: 20px; }
@@ -722,7 +722,7 @@ export default function Home() {
           </style>
         </head>
         <body>
-          <h1>ScholarSynth Formulation Ledger</h1>
+          <h1>ScholarSync Formulation Ledger</h1>
           <table>
             <thead>
               <tr>
@@ -796,7 +796,7 @@ export default function Home() {
             className="font-display-md text-3xl md:text-display-md text-primary tracking-tighter cursor-pointer hover:opacity-85 select-none transition-all"
             onClick={() => setActiveView("overview")}
           >
-            ScholarSynth
+            ScholarSync
           </div>
 
           {/* Links */}
@@ -941,7 +941,7 @@ export default function Home() {
                       <div>
                         <span className="material-symbols-outlined text-primary mb-4" style={{ fontSize: "48px" }}>analytics</span>
                         <h3 className="font-headline-md text-headline-md mb-2">Rigorous Meta-Analysis</h3>
-                        <p className="font-body-md text-body-md text-on-surface-variant">Automated bias detection and statistical re-calibration for thousands of datasets simultaneously. ScholarSynth ensures every insight is built on statistically significant foundations.</p>
+                        <p className="font-body-md text-body-md text-on-surface-variant">Automated bias detection and statistical re-calibration for thousands of datasets simultaneously. ScholarSync ensures every insight is built on statistically significant foundations.</p>
                       </div>
                       <button 
                         className="w-fit border-heavy border-on-surface px-8 py-3 font-label-lg text-label-lg hover:bg-on-surface hover:text-surface transition-all cursor-pointer"
@@ -978,7 +978,7 @@ export default function Home() {
                 <section className="swiss-grid mb-24 md:mb-32">
                   <div className="col-span-12 md:col-span-5">
                     <h2 className="font-display-md text-display-md mb-6">For Developers</h2>
-                    <p className="font-body-lg text-body-lg text-on-surface-variant mb-6">Build custom research pipelines with our GraphQL API. ScholarSynth is designed to be extensible, allowing academic institutions to integrate their proprietary algorithms.</p>
+                    <p className="font-body-lg text-body-lg text-on-surface-variant mb-6">Build custom research pipelines with our GraphQL API. ScholarSync is designed to be extensible, allowing academic institutions to integrate their proprietary algorithms.</p>
                     <ul className="space-y-3 font-label-lg text-label-lg text-on-surface">
                       <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary">check_circle</span> REST & GraphQL Endpoints</li>
                       <li className="flex items-center gap-2"><span className="material-symbols-outlined text-primary">check_circle</span> Python SDK for Data Scientists</li>
@@ -987,14 +987,14 @@ export default function Home() {
                   </div>
                   <div className="col-span-12 md:col-span-7 bg-inverse-surface text-on-primary-container p-6 border-heavy border-on-surface-variant font-mono text-sm overflow-hidden relative">
                     <div className="flex items-center justify-between mb-6 border-b border-on-surface-variant pb-2">
-                      <span className="font-label-sm text-label-sm uppercase text-surface-variant tracking-widest">scholarsynth-api.v1.js</span>
+                      <span className="font-label-sm text-label-sm uppercase text-surface-variant tracking-widest">ScholarSync-api.v1.js</span>
                       <div className="flex gap-2">
                         <div className="w-3 h-3 rounded-full bg-error"></div>
                         <div className="w-3 h-3 rounded-full bg-secondary"></div>
                         <div className="w-3 h-3 rounded-full bg-primary"></div>
                       </div>
                     </div>
-                    <pre className="text-primary-fixed overflow-x-auto text-[13px] leading-relaxed"><code>{`const synth = new ScholarSynth({
+                    <pre className="text-primary-fixed overflow-x-auto text-[13px] leading-relaxed"><code>{`const synth = new ScholarSync({
   apiKey: 'SCHOLAR_42_ALPHA',
   rigorLevel: 'MAXIMUM'
 });
@@ -1030,7 +1030,7 @@ console.log(result.citationWeb.root);`}</code></pre>
                 <section className="swiss-grid mb-24 border-t-2 border-b-2 border-on-surface py-12">
                   <div className="col-span-12 md:col-span-10 md:col-start-2 text-center">
                     <blockquote className="font-display-md text-display-md italic leading-tight mb-6 text-on-surface">
-                      "ScholarSynth has fundamentally changed how we evaluate interdisciplinary risk at our institute. It provides a level of clarity that was previously impossible."
+                      "ScholarSync has fundamentally changed how we evaluate interdisciplinary risk at our institute. It provides a level of clarity that was previously impossible."
                     </blockquote>
                     <cite className="font-label-lg text-label-lg uppercase tracking-widest not-italic text-on-surface">
                       — Dr. Helena Vane, <span className="text-primary">Institute of Advanced Methodology</span>
@@ -1529,7 +1529,7 @@ console.log(result.citationWeb.root);`}</code></pre>
                   <div className="col-span-12 lg:col-span-4 bg-surface-container border-heavy border-outline p-6 flex flex-col gap-4 h-full overflow-hidden">
                     <h2 className="font-headline-md text-lg border-b border-outline-variant pb-2 text-on-surface">Document Vectors Context</h2>
                     <p className="font-body-md text-xs text-on-surface-variant leading-relaxed mb-2">
-                      ScholarSynth parses matching segments using client-side indexing. Below are the indexed text passages that support factual verification.
+                      ScholarSync parses matching segments using client-side indexing. Below are the indexed text passages that support factual verification.
                     </p>
 
                     <div className="flex-grow overflow-y-auto pr-1 flex flex-col gap-4">
@@ -1573,9 +1573,9 @@ console.log(result.citationWeb.root);`}</code></pre>
                         </span>
                         <div className="font-body-md text-sm text-on-surface-variant leading-relaxed">
                           {chatScopeId === "all" ? (
-                            <span>Welcome to the Global ScholarSynth Q&A. I will analyze questions across <strong>all {papers.length} papers</strong> indexed in your library.</span>
+                            <span>Welcome to the Global ScholarSync Q&A. I will analyze questions across <strong>all {papers.length} papers</strong> indexed in your library.</span>
                           ) : (
-                            <span>Welcome to ScholarSynth. Q&A workspace successfully created for <strong>"{papers.find(p => p.id === chatScopeId)?.title || activePaper?.title}"</strong>. Ask any target question.</span>
+                            <span>Welcome to ScholarSync. Q&A workspace successfully created for <strong>"{papers.find(p => p.id === chatScopeId)?.title || activePaper?.title}"</strong>. Ask any target question.</span>
                           )}
                         </div>
                         
@@ -1620,7 +1620,7 @@ console.log(result.citationWeb.root);`}</code></pre>
                             ) : (
                               <span className="text-primary flex items-center gap-1.5">
                                 <BookOpen size={12} />
-                                <span>ScholarSynth Terminal</span>
+                                <span>ScholarSync Terminal</span>
                               </span>
                             )}
                           </span>
@@ -1656,7 +1656,7 @@ console.log(result.citationWeb.root);`}</code></pre>
                         <div className="border border-outline bg-surface-container p-5 mr-12 animate-pulse border-l-4 border-l-primary">
                           <span className="font-mono text-[10px] uppercase tracking-wider text-primary font-bold flex items-center gap-1.5 mb-2">
                             <BookOpen size={12} />
-                            <span>ScholarSynth is searching local vectors...</span>
+                            <span>ScholarSync is searching local vectors...</span>
                           </span>
                           <div className="flex gap-1.5 mt-2">
                             <div className="w-2.5 h-2.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: "0ms" }}></div>
@@ -2055,7 +2055,7 @@ console.log(result.citationWeb.root);`}</code></pre>
       <footer className="w-full bg-inverse-surface text-inverse-on-surface font-body-md text-sm border-t-2 border-outline mt-16 select-text">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter px-6 md:px-margin-desktop py-stack-lg w-full max-w-[1440px] mx-auto">
           <div className="col-span-1">
-            <div className="font-display-md text-2xl text-primary tracking-tighter mb-4">ScholarSynth</div>
+            <div className="font-display-md text-2xl text-primary tracking-tighter mb-4">ScholarSync</div>
             <p className="text-inverse-on-surface/85 text-sm leading-relaxed max-w-xs">
               Built for Academic Rigor. Ensuring the absolute integrity and factual auditability of global scientific research papers.
             </p>
@@ -2073,7 +2073,7 @@ console.log(result.citationWeb.root);`}</code></pre>
             <a className="hover:text-primary transition-colors cursor-pointer">RAG Engine V1</a>
           </div>
           <div className="flex flex-col justify-end items-start md:items-end font-mono text-[10px] text-inverse-on-surface/70 uppercase tracking-widest">
-            <span>© 2026 ScholarSynth. All rights reserved.</span>
+            <span>© 2026 ScholarSync. All rights reserved.</span>
             <div className="flex gap-3 mt-3 text-primary">
               <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>terminal</span>
               <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>database</span>

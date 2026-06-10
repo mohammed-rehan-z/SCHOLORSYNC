@@ -12,7 +12,7 @@ const workSans = Work_Sans({
 });
 
 export const metadata = {
-  title: "ScholarSynth | Academic Rigor Redefined",
+  title: "ScholarSync | Academic Rigor Redefined",
   description: "Experience a modern approach to cross-disciplinary data extraction and peer-reviewed analysis. Synthesize scientific output with local vector indices and Google Gemini.",
 };
 
