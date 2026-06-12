@@ -1,29 +1,38 @@
-import { Space_Grotesk, Work_Sans } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-const workSans = Work_Sans({
-  variable: "--font-work-sans",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
 export const metadata = {
-  title: "ScholarSync | Academic Rigor Redefined",
-  description: "Experience a modern approach to cross-disciplinary data extraction and peer-reviewed analysis. Synthesize scientific output with local vector indices and Google Gemini.",
+  title: "ScholarSync - Academic Intelligence Platform",
+  description: "A decentralized academic intelligence platform designed for deep literature synthesis.",
 };
+
+import { ThemeProvider } from "next-themes";
 
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${workSans.variable} h-full antialiased light`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-surface text-on-surface">{children}</body>
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+      </head>
+      <body className="font-body-md text-body-md min-h-screen flex flex-col relative overflow-x-hidden bg-background text-foreground">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
-

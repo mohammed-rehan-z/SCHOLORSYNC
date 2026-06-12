@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ScholarSync - Academic Intelligence Platform</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&amp;family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#c4c7c6",
+                        "on-secondary-fixed": "#231a0e",
+                        "inverse-primary": "#5d5f5e",
+                        "surface-dim": "#161616",
+                        "primary-fixed": "#e2e2e1",
+                        "outline": "#2e2e2e",
+                        "on-tertiary-fixed-variant": "#314d33",
+                        "inverse-surface": "#e5e2e1",
+                        "outline-variant": "#434847",
+                        "secondary-fixed": "#f1e0cb",
+                        "surface-container-high": "#1e1e1e",
+                        "primary-container": "#e2e2e1",
+                        "surface-container-highest": "#353534",
+                        "error": "#f87171",
+                        "surface-variant": "#353534",
+                        "surface-container-low": "#111111",
+                        "error-container": "#93000a",
+                        "surface": "#131313",
+                        "on-primary-fixed-variant": "#454747",
+                        "tertiary-container": "#caebc7",
+                        "on-tertiary-fixed": "#05210a",
+                        "surface-container-lowest": "#0a0a0a",
+                        "secondary-fixed-dim": "#d4c4b0",
+                        "on-tertiary": "#1b361e",
+                        "tertiary-fixed": "#caebc7",
+                        "on-error": "#690005",
+                        "surface-bright": "#1a1a1a",
+                        "primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#504536",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary": "#392f21",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary-container": "#4e6c4f",
+                        "secondary-container": "#524738",
+                        "surface-container": "#161616",
+                        "on-surface": "#e5e2e1",
+                        "on-primary": "#2f3130",
+                        "surface-tint": "#c6c6c6",
+                        "secondary": "#d4c4b0",
+                        "tertiary-fixed-dim": "#aecfac",
+                        "inverse-on-surface": "#313030",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "on-primary-container": "#636564",
+                        "tertiary": "#ffffff",
+                        "on-secondary-container": "#c6b6a3",
+                        "background": "#0d0d0d",
+                        "on-primary-fixed": "#1a1c1c",
+                        "accent": "#C4B49E"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "section-gap": "96px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "base-unit": "8px",
+                        "margin-desktop": "64px",
+                        "container-max": "1400px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "label-sm": ["Geist Mono"],
+                        "body-md": ["Geist"],
+                        "label-md": ["Geist Mono"],
+                        "display-lg-mobile": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "headline-sm": ["Geist"],
+                        "headline-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["17px", {"lineHeight": "1.65", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                        "label-sm": ["10px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                        "body-md": ["15px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["11px", {"lineHeight": "1", "letterSpacing": "0.08em", "fontWeight": "500"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                        "display-lg": ["56px", {"lineHeight": "1.05", "letterSpacing": "-0.03em", "fontWeight": "500"}],
+                        "headline-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "headline-lg": ["36px", {"lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0D0D0D;
+            color: #F0F0EF;
+        }
+        ::selection {
+            background: #C4B49E;
+            color: #0D0D0D;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased min-h-screen flex flex-col relative overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex justify-center items-center pointer-events-none p-4">
+<div class="pointer-events-auto bg-surface-container/80 backdrop-blur-md rounded-full mt-4 mx-auto w-fit px-6 py-2 border border-outline flex items-center gap-8 transition-all duration-300 ease-in-out">
+<span class="font-headline-sm text-headline-sm font-bold tracking-tighter text-primary">ScholarSync</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="font-label-md text-label-md uppercase tracking-wider text-primary font-bold border-b border-primary pb-1" href="#">Research</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors" href="#">Intelligence</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors" href="#">Library</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors" href="#">Archive</a>
+</div>
+<button class="bg-accent text-on-secondary-fixed font-label-md text-label-md uppercase tracking-wider px-4 py-1.5 rounded-full hover:bg-opacity-90 transition-opacity">Connect Identity</button>
+</div>
+</nav>
+<!-- Hero Section -->
+<main class="flex-grow pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center min-h-[614px]">
+<div class="md:col-span-7 flex flex-col gap-8 pr-0 md:pr-12">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-[#F0F0EF] max-w-[15ch]">
+                    Scientific output, systematically indexed.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    A decentralized academic intelligence platform designed for deep literature synthesis, exact provenance tracking, and unbounded archival access.
+                </p>
+<div class="flex flex-wrap gap-4 mt-4">
+<button class="bg-accent text-on-secondary-fixed font-label-md text-label-md uppercase tracking-wider px-6 py-3 rounded-full hover:bg-opacity-90 transition-opacity flex items-center gap-2">
+<span>Search Papers</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+<button class="border border-outline text-primary font-label-md text-label-md uppercase tracking-wider px-6 py-3 rounded-full hover:bg-surface-container-low transition-colors">
+                        Open Library
+                    </button>
+</div>
+</div>
+<div class="md:col-span-5 w-full mt-12 md:mt-0">
+<div class="bg-surface-container-low border border-outline rounded-lg overflow-hidden shadow-none flex flex-col h-full min-h-[300px]">
+<div class="border-b border-outline bg-surface p-3 flex items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-outline"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-outline"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-outline"></div>
+<span class="ml-2 font-label-sm text-label-sm text-on-surface-variant uppercase">scholarsync-cli</span>
+</div>
+<div class="p-6 font-label-sm text-label-sm text-on-surface-variant whitespace-pre overflow-x-auto">
+<span class="text-accent">const</span> scholarsync = <span class="text-accent">require</span>('@scholarsync/sdk');
+
+<span class="text-outline-variant">// Initialize client with neural context</span>
+<span class="text-accent">const</span> client = <span class="text-accent">new</span> scholarsync.Client({
+    node: 'wss://mainnet.scholarsync.network',
+    synthesisMode: 'deep'
+});
+
+<span class="text-outline-variant">// Execute semantic literature review</span>
+<span class="text-accent">async function</span> runAnalysis() {
+    <span class="text-accent">const</span> results = <span class="text-accent">await</span> client.search({
+        query: "quantum coherence in biological systems",
+        temporalRange: [2018, 2024],
+        requireProvenance: true
+    });
+
+    console.log(`Indexed ${results.nodes} primary sources.`);
+    console.log(`Generated synthesis matrix: ${results.matrixId}`);
+}
+                    </div>
+</div>
+</div>
+</div>
+<!-- Bento Grid -->
+<div class="mt-section-gap flex flex-col gap-6">
+<div class="flex items-center gap-4 mb-8">
+<div class="h-[1px] bg-outline flex-grow"></div>
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest px-4">Core Modules</h2>
+<div class="h-[1px] bg-outline flex-grow"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[280px]">
+<div class="md:col-span-7 bg-surface-container-low border border-outline rounded-lg p-8 flex flex-col justify-between group hover:border-outline-variant transition-colors relative overflow-hidden">
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-surface-container-highest/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div>
+<span class="font-label-sm text-label-sm text-accent uppercase tracking-wider border border-accent/30 rounded px-2 py-1 bg-accent/5">Module 01</span>
+<h3 class="font-headline-md text-headline-md text-primary mt-6">Literature Search</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-3 max-w-md">Semantic vector search across 120M+ academic nodes. Bypasses keyword limitations to find conceptual overlaps across disciplines.</p>
+</div>
+<div class="flex justify-end mt-4">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors text-[32px]">manage_search</span>
+</div>
+</div>
+<div class="md:col-span-5 bg-surface-container-low border border-outline rounded-lg p-8 flex flex-col justify-between group hover:border-outline-variant transition-colors relative overflow-hidden">
+<div class="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.02)_50%,transparent_75%)] bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 hover:[background-position:200%_0,0_0]"></div>
+<div>
+<span class="font-label-sm text-label-sm text-accent uppercase tracking-wider border border-accent/30 rounded px-2 py-1 bg-accent/5">Module 02</span>
+<h3 class="font-headline-md text-headline-md text-primary mt-6">Research Library</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-3">Personalized local indexing of annotated PDFs, completely synced to the decentralized protocol.</p>
+</div>
+<div class="flex justify-end mt-4">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors text-[32px]">library_books</span>
+</div>
+</div>
+<div class="md:col-span-12 bg-surface-container-low border border-outline rounded-lg p-8 flex flex-col md:flex-row justify-between items-start md:items-center group hover:border-outline-variant transition-colors relative overflow-hidden h-full">
+<div class="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-surface-container-highest/10 to-transparent"></div>
+<div class="max-w-xl z-10">
+<span class="font-label-sm text-label-sm text-accent uppercase tracking-wider border border-accent/30 rounded px-2 py-1 bg-accent/5">Infrastructure</span>
+<h3 class="font-headline-lg text-headline-lg text-primary mt-6 mb-2">Decentralized Archive Access</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-3">Immutable storage protocols guarantee permanent access to published knowledge. No paywalls, no link rot, cryptographically verifiable history.</p>
+</div>
+<div class="mt-8 md:mt-0 flex gap-4 z-10 items-center">
+<div class="flex -space-x-2">
+<div class="w-10 h-10 rounded-full border border-outline bg-surface flex items-center justify-center text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">dns</span></div>
+<div class="w-10 h-10 rounded-full border border-outline bg-surface flex items-center justify-center text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">hub</span></div>
+<div class="w-10 h-10 rounded-full border border-outline bg-surface flex items-center justify-center text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">lock</span></div>
+</div>
+</div>
+</div>
+<div class="md:col-span-5 bg-surface-container-low border border-outline rounded-lg p-8 flex flex-col justify-between group hover:border-outline-variant transition-colors">
+<div>
+<span class="font-label-sm text-label-sm text-accent uppercase tracking-wider border border-accent/30 rounded px-2 py-1 bg-accent/5">Module 03</span>
+<h3 class="font-headline-md text-headline-md text-primary mt-6">AI Synthesis</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-3">Automated literature reviews with mathematically grounded confidence scores.</p>
+</div>
+<div class="flex justify-end mt-4">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors text-[32px]">memory</span>
+</div>
+</div>
+<div class="md:col-span-7 bg-surface-container-low border border-outline rounded-lg p-8 flex flex-col justify-between group hover:border-outline-variant transition-colors">
+<div>
+<span class="font-label-sm text-label-sm text-accent uppercase tracking-wider border border-accent/30 rounded px-2 py-1 bg-accent/5">Module 04</span>
+<h3 class="font-headline-md text-headline-md text-primary mt-6">Citation Provenance</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-3">Visual graph exploration of citation networks. Instantly identify foundational papers and theoretical lineages across decades of research.</p>
+</div>
+<div class="flex justify-end mt-4">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors text-[32px]">account_tree</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline w-full py-12 px-margin-mobile md:px-margin-desktop mt-auto">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-start gap-8 transition-opacity duration-200">
+<div>
+<span class="font-label-md text-label-md font-bold text-primary">ScholarSync</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-2">© 2024 ScholarSync Intelligence Systems. Terminal Access v4.0.2</p>
+</div>
+<div class="flex gap-12">
+<div class="flex flex-col gap-3">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline underline-offset-4 uppercase tracking-wider" href="#">Documentation</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline underline-offset-4 uppercase tracking-wider" href="#">Privacy Protocol</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline underline-offset-4 uppercase tracking-wider" href="#">Neural Ethics</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary underline underline-offset-4 uppercase tracking-wider" href="#">System Status</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
